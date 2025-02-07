@@ -1,6 +1,6 @@
 async function fetchTime() {
   try {
-    const response = await fetch("http://127.0.0.1:3000");
+    const response = await fetch("https://third-of-the-night.vercel.app/");
     const data = await response.json();
 
     document.getElementById("night").innerHTML = data.prayTime.secondNight;
