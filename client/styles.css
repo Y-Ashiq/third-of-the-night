@@ -10,7 +10,6 @@ h1,p {
   }
 
 
-
 .col {
     border: 2px solid white; /* White border */
     border-radius: 10px; /* Rounded corners */
@@ -18,4 +17,29 @@ h1,p {
     margin: 10px; /* Space between columns */
     flex: 1; /* Allows both columns to expand equally */
     min-width: 200px; /* Ensures responsiveness on smaller screens */
+}
+
+
+
+.table-container {
+  border: 2px solid white; 
+  border-radius: 10px; 
+  margin: 30px auto;
+  width: 80%;
+}
+
+.table th {
+  background-color: transparent; /* Dark header */
+  color: white;
+  font-size: 18px;
+}
+.table td {
+  background-color: transparent; /* Dark header */
+
+  font-size: 16px;
+  color: white; /* White font for better contrast */
+}
+.dropdown-container {
+
+  margin-top: 20px;
 }
