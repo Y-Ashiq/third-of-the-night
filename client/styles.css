@@ -9,9 +9,13 @@ h1,p {
     color: #ffffff; /* Ensure the heading is white */
   }
 
-  .col {
-    border: 2px solid white; /* Adds a black border */
-    border-radius: 10px; /* Rounds the corners */
-    padding: 20px; /* Adds some spacing inside the border */
-    margin: 10px; /* Adds space between columns */
+
+
+.col {
+    border: 2px solid white; /* White border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Inner spacing */
+    margin: 10px; /* Space between columns */
+    flex: 1; /* Allows both columns to expand equally */
+    min-width: 200px; /* Ensures responsiveness on smaller screens */
 }

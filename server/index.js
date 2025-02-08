@@ -42,7 +42,9 @@ async function scrapePrayerTimes(url) {
 }
 
 function timeDiff(magh, fajr) {
-  const diff = moment(fajr, "HH:mm A").diff(moment(magh, "HH:mm A"), "minutes");
+  const diff = moment(fajr, "hh:mm A")
+    .add(1, "day")
+    .diff(moment(magh, "hh:mm a"), "minutes");
 
   let secondNight =
     moment(magh, "HH:mm A")
@@ -59,11 +61,13 @@ function timeDiff(magh, fajr) {
 }
 
 app.get("/", async (req, res) => {
+  let location = req.query.location || "alexandria";
+
   let Time = await scrapePrayerTimes(
-    "https://timesprayer.com/en/prayer-times-in-alexandria.html"
+    `https://timesprayer.com/en/prayer-times-in-${location}.html`
   );
 
   res.status(200).json({ prayTime: Time });
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`listening on port ${port}!`));
