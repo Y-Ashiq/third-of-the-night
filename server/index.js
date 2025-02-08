@@ -16,15 +16,26 @@ async function scrapePrayerTimes(url) {
 
     const prayerTimes = [];
 
-    $("tbody").each((index, element) => {
-      const prayerTime = $(element).find("td:nth-child(2)").text().trim();
+    // $("tbody").each((index, element) => {
+    //   const prayerTime = $(element).find("td:nth-child(2)").text().trim();
 
-      prayerTimes.push(prayerTime);
-    });
+    //   prayerTimes.push(prayerTime);
+    // });
+    const firstRowFifthTd = $("table.prayertimerange tbody tr")
+      .eq(0)
+      .find("td")
+      .eq(5)
+      .text()
+      .trim();
 
-    let test = prayerTimes[0].split(" ");
+    const secondRowSecondTd = $("table.prayertimerange tbody tr")
+      .eq(1)
+      .find("td")
+      .eq(1)
+      .text()
+      .trim();
 
-    return timeDiff(test[0] + "AM", test[4].replace("PM", "") + "PM");
+    return timeDiff(firstRowFifthTd, secondRowSecondTd);
   } catch (error) {
     console.error("Error scraping data:", error);
   }
@@ -41,7 +52,10 @@ function timeDiff(magh, fajr) {
     moment(secondNight, "HH:mm A")
       .add(Math.abs(diff) / 3, "minutes")
       .format("hh:mm") + "AM";
-  return { secondNight, thirdNight };
+
+  let today = moment().format("MMM Do YY");
+
+  return { secondNight, thirdNight, today };
 }
 
 app.get("/", async (req, res) => {

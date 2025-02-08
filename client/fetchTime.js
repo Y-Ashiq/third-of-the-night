@@ -5,6 +5,7 @@ async function fetchTime() {
 
     document.getElementById("night").innerHTML = data.prayTime.secondNight;
     document.getElementById("night2").innerHTML = data.prayTime.thirdNight;
+    document.getElementById("today").innerHTML += data.prayTime.today;
   } catch (error) {
     console.error("Error fetching times:", error);
   }
