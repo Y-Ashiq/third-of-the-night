@@ -1,4 +1,16 @@
 async function fetchTime() {
+
+  const translationMap = {
+    "Fajr": "الفجر",
+    "Sunrise": "الشروق",
+    "Dhuhr": "الظهر",
+    "Asr": "العصر",
+    "Maghrib": "المغرب",
+    "Isha": "العشاء"
+};
+
+let currentLang = document.documentElement.lang === "ar" ? "ar" : "en";
+
   document.querySelectorAll(".dropdown-item").forEach((item) => {
     item.addEventListener("click", async function (event) {
       event.preventDefault();
@@ -13,11 +25,13 @@ async function fetchTime() {
 
         const tableBody = document.getElementById("prayerTableBody");
         tableBody.innerHTML = data.prayTime.prayerTimes
-          .map(
-            (pt) => ` <tr>
-                <td>${pt.prayer}</td>
+          .map((pt) =>{ 
+            let prayerName = currentLang === "ar" ? translationMap[pt.prayer] || pt.prayer : pt.prayer;
+
+            return` <tr>
+                <td>${prayerName}</td>
                 <td>${pt.time}</td>
-            </tr>`
+            </tr>`}
           )
           .join("");
 

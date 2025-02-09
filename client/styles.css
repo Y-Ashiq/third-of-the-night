@@ -43,3 +43,10 @@ h1,p {
 
   margin-top: 20px;
 }
+
+.btn{
+  background-color: white; 
+  font-size: 16px;
+  color: #2a5298; 
+
+}
