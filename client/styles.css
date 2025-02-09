@@ -3,20 +3,20 @@ body {
   text-align: center;
     margin: 50px;
     background: linear-gradient(to right, #1e3c72, #2a5298);
-    color: #ffffff; /* White text */
+    color: #ffffff; 
   }
 h1,p {
-    color: #ffffff; /* Ensure the heading is white */
+    color: #ffffff; 
   }
 
 
 .col {
-    border: 2px solid white; /* White border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Inner spacing */
-    margin: 10px; /* Space between columns */
-    flex: 1; /* Allows both columns to expand equally */
-    min-width: 200px; /* Ensures responsiveness on smaller screens */
+    border: 2px solid white; 
+    border-radius: 10px; 
+    padding: 20px; 
+    margin: 10px;
+    flex: 1; 
+    min-width: 200px; 
 }
 
 
@@ -29,15 +29,15 @@ h1,p {
 }
 
 .table th {
-  background-color: transparent; /* Dark header */
+  background-color: transparent; 
   color: white;
   font-size: 18px;
 }
 .table td {
-  background-color: transparent; /* Dark header */
+  background-color: transparent; 
 
   font-size: 16px;
-  color: white; /* White font for better contrast */
+  color: white; 
 }
 .dropdown-container {
 

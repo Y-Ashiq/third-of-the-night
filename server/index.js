@@ -18,17 +18,17 @@ async function scrapePrayerTimes(url) {
 
     $(".ptTable tbody tr").each((index, element) => {
       const columns = $(element).find("td");
-      
-      if (columns.length === 2) {
-          const prayer = $(columns[0]).text().trim();
-          const time = $(columns[1]).text().trim();
 
-          if (prayer && time) {
-              prayerTimes.push({ prayer, time });
-          }
+      if (columns.length === 2) {
+        const prayer = $(columns[0]).text().trim();
+        const time = $(columns[1]).text().trim();
+
+        if (prayer && time) {
+          prayerTimes.push({ prayer, time });
+        }
       }
-  });
-    
+    });
+
     const firstRowFifthTd = $("table.prayertimerange tbody tr")
       .eq(0)
       .find("td")
@@ -42,14 +42,17 @@ async function scrapePrayerTimes(url) {
       .eq(1)
       .text()
       .trim();
+    const dateText = $('b:contains("Date")').parent().text().trim();
 
-    return timeDiff(firstRowFifthTd, secondRowSecondTd,prayerTimes);
+    const timeResults = timeDiff(firstRowFifthTd, secondRowSecondTd);
+
+    return { ...timeResults, prayerTimes, dateText };
   } catch (error) {
     console.error("Error scraping data:", error);
   }
 }
 
-function timeDiff(magh, fajr,prayerTimes) {
+function timeDiff(magh, fajr) {
   const diff = moment(fajr, "hh:mm A")
     .add(1, "day")
     .diff(moment(magh, "hh:mm a"), "minutes");
@@ -63,9 +66,7 @@ function timeDiff(magh, fajr,prayerTimes) {
       .add(Math.abs(diff) / 3, "minutes")
       .format("hh:mm") + "AM";
 
-  let today = moment().format("MMM Do YY");
-
-  return { secondNight, thirdNight, today ,prayerTimes};
+  return { secondNight, thirdNight };
 }
 
 app.get("/", async (req, res) => {

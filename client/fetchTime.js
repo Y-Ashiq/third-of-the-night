@@ -7,7 +7,7 @@ async function fetchTime() {
       try {
         document.getElementById("today").innerHTML += "";
         const response = await fetch(
-          `https://third-of-the-night.vercel.app/?location=${selectedLocation}`
+          `http://localhost:3000/?location=${selectedLocation}`
         );
         const data = await response.json();
 
@@ -24,8 +24,8 @@ async function fetchTime() {
         document.getElementById("night").innerHTML = data.prayTime.secondNight;
         document.getElementById("night2").innerHTML = data.prayTime.thirdNight;
         let todayElement = document.getElementById("today");
-        if (!todayElement.innerHTML.includes(data.prayTime.today)) {
-          todayElement.innerHTML += data.prayTime.today;
+        if (!todayElement.innerHTML.includes(data.prayTime.dateText)) {
+          todayElement.innerHTML += data.prayTime.dateText;
         }
       } catch (error) {
         console.error("Error fetching times:", error);
@@ -35,3 +35,4 @@ async function fetchTime() {
 }
 
 fetchTime();
+//https://third-of-the-night.vercel.app/?location=${selectedLocation}
