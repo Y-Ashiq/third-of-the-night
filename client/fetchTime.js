@@ -7,7 +7,7 @@ async function fetchTime() {
       try {
         document.getElementById("today").innerHTML += "";
         const response = await fetch(
-          `http://localhost:3000/?location=${selectedLocation}`
+          `https://third-of-the-night.vercel.app/?location=${selectedLocation}`
         );
         const data = await response.json();
 
@@ -35,4 +35,3 @@ async function fetchTime() {
 }
 
 fetchTime();
-//https://third-of-the-night.vercel.app/?location=${selectedLocation}
