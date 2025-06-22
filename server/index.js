@@ -21,7 +21,7 @@ async function scrapePrayerTimes(url) {
 
       if (columns.length === 2) {
         const prayer = $(columns[0]).text().trim();
-        const time = $(columns[1]).text().trim();
+        const time = $(columns[1]).text().trim() +1;
 
         if (prayer && time) {
           prayerTimes.push({ prayer, time });
