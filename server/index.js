@@ -21,7 +21,7 @@ async function scrapePrayerTimes(url) {
 
       if (columns.length === 2) {
         const prayer = $(columns[0]).text().trim();
-        const time = $(columns[1]).text().trim() +1;
+        const time = $(columns[1]).text().trim();
 
         if (prayer && time) {
           prayerTimes.push({ prayer, time });
@@ -34,7 +34,7 @@ async function scrapePrayerTimes(url) {
       .find("td")
       .eq(5)
       .text()
-      .trim();
+      .trim()+1;
 
     const secondRowSecondTd = $("table.prayertimerange tbody tr")
       .eq(1)
