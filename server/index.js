@@ -66,7 +66,7 @@ function timeDiff(magh, fajr) {
     moment(secondNight, "HH:mm A")
       .add(Math.abs(diff) / 3, "minutes").format("hh:mm") + "AM";
 
-  return { secondNight, thirdNight };
+  return { moment(secondNight, "hh:mm A").add(1, "hour").format("hh:mm A");, moment(thirdNight, "hh:mm A").add(1, "hour").format("hh:mm A"); };
 }
 
 app.get("/", async (req, res) => {
