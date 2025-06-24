@@ -61,12 +61,10 @@ function timeDiff(magh, fajr) {
 
   let secondNight =
     moment(magh, "HH:mm A")
-      .add(Math.abs(diff) / 3, "minutes").add(1, "hour")
-      .format("hh:mm") + "PM";
+      .add(Math.abs(diff) / 3, "minutes").format("hh:mm") + "PM";
   let thirdNight =
     moment(secondNight, "HH:mm A")
-      .add(Math.abs(diff) / 3, "minutes").add(1, "hour")
-      .format("hh:mm") + "AM";
+      .add(Math.abs(diff) / 3, "minutes").format("hh:mm") + "AM";
 
   return { secondNight, thirdNight };
 }
